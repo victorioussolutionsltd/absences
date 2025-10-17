@@ -23,6 +23,16 @@ export const translations = {
         days: 'days',
         notAvailable: 'N/A'
       },
+      absenceTypes: {
+        ANNUAL_LEAVE: 'Annual Leave',
+        SICKNESS: 'Sickness',
+        PERSONAL: 'Personal Leave',
+        MATERNITY: 'Maternity Leave',
+        PATERNITY: 'Paternity Leave',
+        HOLIDAY: 'Holiday',
+        VACATION: 'Vacation',
+        SICK_LEAVE: 'Sick Leave'
+      },
       messages: {
         emptyTable: 'No absence records found',
         loading: 'Loading...',
@@ -67,6 +77,16 @@ export const translations = {
         days: 'días',
         notAvailable: 'N/D'
       },
+      absenceTypes: {
+        ANNUAL_LEAVE: 'Vacaciones Anuales',
+        SICKNESS: 'Enfermedad',
+        PERSONAL: 'Permiso Personal',
+        MATERNITY: 'Baja por Maternidad',
+        PATERNITY: 'Baja por Paternidad',
+        HOLIDAY: 'Día Festivo',
+        VACATION: 'Vacaciones',
+        SICK_LEAVE: 'Baja por Enfermedad'
+      },
       messages: {
         emptyTable: 'No se encontraron registros de ausencias',
         loading: 'Cargando...',
@@ -110,6 +130,16 @@ export const translations = {
         day: 'Tag',
         days: 'Tage',
         notAvailable: 'N/V'
+      },
+      absenceTypes: {
+        ANNUAL_LEAVE: 'Jahresurlaub',
+        SICKNESS: 'Krankheit',
+        PERSONAL: 'Persönlicher Urlaub',
+        MATERNITY: 'Mutterschaftsurlaub',
+        PATERNITY: 'Vaterschaftsurlaub',
+        HOLIDAY: 'Feiertag',
+        VACATION: 'Urlaub',
+        SICK_LEAVE: 'Krankenstand'
       },
       messages: {
         emptyTable: 'Keine Abwesenheitsdatensätze gefunden',

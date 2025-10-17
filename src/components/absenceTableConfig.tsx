@@ -1,6 +1,20 @@
 import { type TableColumn } from './Table';
 import { t } from '../i18n/translations';
 
+// Absence type constants
+export const ABSENCE_TYPES = {
+  ANNUAL_LEAVE: 'ANNUAL_LEAVE',
+  SICKNESS: 'SICKNESS',
+  PERSONAL: 'PERSONAL',
+  MATERNITY: 'MATERNITY',
+  PATERNITY: 'PATERNITY',
+  HOLIDAY: 'HOLIDAY',
+  VACATION: 'VACATION',
+  SICK_LEAVE: 'SICK_LEAVE'
+} as const;
+
+export type AbsenceType = typeof ABSENCE_TYPES[keyof typeof ABSENCE_TYPES];
+
 // Combined data type for the table
 export interface AbsenceWithConflict {
   id: number;
@@ -29,6 +43,48 @@ const getAbsenceTypeColor = (type: string): string => {
     return 'bg-pink-100 text-pink-800';
   }
   return 'bg-gray-100 text-gray-800';
+};
+
+// Helper function to get translated absence type by constant
+export const getTranslatedAbsenceType = (absenceType: AbsenceType): string => {
+  return t(`table.absenceTypes.${absenceType}`);
+};
+
+// Helper function to translate absence types
+const translateAbsenceType = (type: string): string => {
+  const upperType = type.toUpperCase().replaceAll(/\s+/g, '_');
+  
+  // Try to find exact match first
+  const translationKey = `table.absenceTypes.${upperType}`;
+  const translated = t(translationKey);
+  
+  // If translation exists and is different from the key, use it
+  if (translated !== translationKey) {
+    return translated;
+  }
+  
+  // Fallback: try common mappings
+  const commonMappings: Record<string, string> = {
+    'ANNUAL LEAVE': 'ANNUAL_LEAVE',
+    'SICK LEAVE': 'SICK_LEAVE',
+    'SICK': 'SICKNESS',
+    'VACATION': 'VACATION',
+    'HOLIDAY': 'HOLIDAY',
+    'PERSONAL': 'PERSONAL',
+    'MATERNITY': 'MATERNITY',
+    'PATERNITY': 'PATERNITY'
+  };
+  
+  const mappedKey = commonMappings[upperType];
+  if (mappedKey) {
+    const mappedTranslation = t(`table.absenceTypes.${mappedKey}`);
+    if (mappedTranslation !== `table.absenceTypes.${mappedKey}`) {
+      return mappedTranslation;
+    }
+  }
+  
+  // If no translation found, return original
+  return type;
 };
 
 // Helper function to format dates
@@ -104,7 +160,7 @@ export const getAbsenceTableColumns = (): TableColumn<AbsenceWithConflict>[] => 
     sortable: true,
     render: (value) => (
       <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getAbsenceTypeColor(value)}`}>
-        {value}
+        {translateAbsenceType(value)}
       </span>
     ),
   },
