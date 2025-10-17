@@ -25,11 +25,11 @@ export function LanguageSwitcher({ onLanguageChange }: LanguageSwitcherProps) {
 
   return (
     <div className="flex items-center space-x-2">
-      <span className="text-sm text-gray-600">Language:</span>
+      <span className="text-sm text-gray-600 hidden sm:inline">Language:</span>
       <select
         value={currentLang}
         onChange={(e) => handleLanguageChange(e.target.value as SupportedLanguage)}
-        className="px-3 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        className="px-2 sm:px-3 py-1 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-w-0"
       >
         {languages.map((lang) => (
           <option key={lang.code} value={lang.code}>

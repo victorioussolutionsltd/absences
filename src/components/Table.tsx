@@ -100,10 +100,21 @@ export function PaginatedTable<T extends Record<string, any>>({
     return (
       <div className={`w-full ${className}`}>
         <div className="animate-pulse">
-          <div className="h-10 bg-gray-200 rounded mb-4"></div>
-          {Array.from({ length: pageSize }, (_, i) => (
-            <div key={`skeleton-row-${i + startIndex}`} className="h-8 bg-gray-100 rounded mb-2"></div>
-          ))}
+          {/* Desktop skeleton */}
+          <div className="hidden md:block">
+            <div className="h-10 bg-gray-200 rounded mb-4"></div>
+            {Array.from({ length: pageSize }, (_, i) => (
+              <div key={`skeleton-row-${i + startIndex}`} className="h-8 bg-gray-100 rounded mb-2"></div>
+            ))}
+          </div>
+          
+          {/* Mobile skeleton */}
+          <div className="md:hidden space-y-4">
+            <div className="h-16 bg-gray-200 rounded mb-4"></div>
+            {Array.from({ length: pageSize }, (_, i) => (
+              <div key={`skeleton-card-${i + startIndex}`} className="h-32 bg-gray-100 rounded"></div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -111,8 +122,38 @@ export function PaginatedTable<T extends Record<string, any>>({
 
   return (
     <div className={`w-full ${className}`}>
-      {/* Table */}
-      <div className="overflow-x-auto shadow-sm border border-gray-200 rounded-lg">
+      {/* Mobile Sort Controls */}
+      <div className="md:hidden mb-4 flex items-center justify-between bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+        <span className="text-sm font-medium text-gray-700">Sort by:</span>
+        <select
+          value={sortConfig.key ? String(sortConfig.key) : ''}
+          onChange={(e) => {
+            const columnKey = e.target.value as keyof T;
+            if (columnKey) {
+              handleSort(columnKey);
+            }
+          }}
+          className="text-sm border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        >
+          <option value="">No sorting</option>
+          {columns
+            .filter(col => col.sortable)
+            .map((column) => {
+              let sortIndicator = '';
+              if (sortConfig.key === column.key) {
+                sortIndicator = sortConfig.direction === 'asc' ? ' ↑' : ' ↓';
+              }
+              return (
+                <option key={String(column.key)} value={String(column.key)}>
+                  {column.label}{sortIndicator}
+                </option>
+              );
+            })}
+        </select>
+      </div>
+
+      {/* Desktop Table View */}
+      <div className="hidden md:block overflow-x-auto shadow-sm border border-gray-200 rounded-lg">
         <table className="min-w-full divide-y divide-gray-200">
           {/* Header */}
           <thead className="bg-gray-50">
@@ -203,26 +244,62 @@ export function PaginatedTable<T extends Record<string, any>>({
         </table>
       </div>
 
+      {/* Mobile Card View */}
+      <div className="md:hidden space-y-4">
+        {paginatedData.length === 0 ? (
+          <div className="text-center py-8 text-gray-500 bg-white rounded-lg border border-gray-200">
+            {emptyMessage}
+          </div>
+        ) : (
+          paginatedData.map((row, rowIndex) => (
+            <div
+              key={`card-${startIndex + rowIndex}-${JSON.stringify(Object.values(row).slice(0, 2))}`}
+              className="bg-white rounded-lg border border-gray-200 shadow-sm p-4 space-y-3"
+            >
+              {columns.map((column) => (
+                <div key={String(column.key)} className="flex justify-between items-start">
+                  <span className="text-sm font-medium text-gray-500 min-w-0 flex-1">
+                    {column.label}:
+                  </span>
+                  <span className="text-sm text-gray-900 text-right min-w-0 flex-1 ml-2">
+                    {column.render
+                      ? column.render(row[column.key], row, startIndex + rowIndex)
+                      : String(row[column.key] ?? '')}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ))
+        )}
+      </div>
+
       {/* Pagination */}
       {showPagination && totalPages > 1 && (
         <div className="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6">
-          <div className="flex justify-between flex-1 sm:hidden">
+          {/* Mobile pagination */}
+          <div className="flex justify-between items-center flex-1 sm:hidden">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Previous
+              ← Prev
             </button>
+            
+            <span className="text-sm text-gray-700 px-2">
+              <span className="font-medium">{currentPage}</span> of <span className="font-medium">{totalPages}</span>
+            </span>
+            
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="relative inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Next
+              Next →
             </button>
           </div>
 
+          {/* Desktop pagination */}
           <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
               <p className="text-sm text-gray-700">
                 Showing{' '}
