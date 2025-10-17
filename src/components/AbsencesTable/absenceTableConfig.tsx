@@ -187,20 +187,8 @@ export const getAbsenceTableColumns = (onEmployeeNameClick?: (employeeName: stri
   },
 ];
 
-// Backward compatibility - keep the static export but mark as deprecated
-/** @deprecated Use getAbsenceTableColumns() instead for dynamic language support */
-export const absenceTableColumns = getAbsenceTableColumns();
-
-// Re-export API_CONFIG for backward compatibility
-/** @deprecated Import from '@/config/api' directly instead */
-export { API_CONFIG } from '@/config/api';
-
 // Table settings - function to generate config with current language
 export const getTableConfig = () => ({
   emptyMessage: t('table.messages.emptyTable'),
   className: 'shadow-lg',
 } as const);
-
-// Backward compatibility - keep the static export but mark as deprecated
-/** @deprecated Use getTableConfig() instead for dynamic language support */
-export const TABLE_CONFIG = getTableConfig();
