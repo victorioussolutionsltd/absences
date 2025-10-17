@@ -9,6 +9,7 @@ import {
   AbsenceWithConflict
 } from './absenceTableConfig';
 import { t } from '@/i18n/translations';
+import { calculateEndDate } from '@/utils/dateHelpers';
 
 // Types based on the API responses
 interface Absence {
@@ -51,20 +52,6 @@ export function AbsencesTable() {
       throw new Error(t('errors.fetchConflict', { id: id.toString(), error: response.statusText }));
     }
     return response.json();
-  };
-
-  // Helper function to calculate correct end date
-  const calculateEndDate = (startDate: string, days?: number): string => {
-    if (!days || days <= 0) {
-      return startDate; // If no days specified, end date is same as start date
-    }
-    
-    const start = new Date(startDate);
-    // Add (days - 1) because if absence is 1 day, start and end should be the same
-    const end = new Date(start);
-    end.setDate(start.getDate() + (days - 1));
-    
-    return end.toISOString().split('T')[0]; // Return in YYYY-MM-DD format
   };
 
   useEffect(() => {

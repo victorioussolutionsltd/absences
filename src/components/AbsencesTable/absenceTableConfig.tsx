@@ -1,5 +1,6 @@
 import { type TableColumn } from '../Table';
 import { t } from '../../i18n/translations';
+import { formatDate } from '@/utils/dateHelpers';
 
 // Absence type constants
 export const ABSENCE_TYPES = {
@@ -85,19 +86,6 @@ const translateAbsenceType = (type: string): string => {
   
   // If no translation found, return original
   return type;
-};
-
-// Helper function to format dates
-const formatDate = (value: string): string => {
-  try {
-    return new Date(value).toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    });
-  } catch {
-    return value;
-  }
 };
 
 // Table columns configuration - function to generate columns with current language
