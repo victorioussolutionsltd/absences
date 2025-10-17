@@ -147,7 +147,7 @@ export function EmployeeAbsencesModal({
                           {t('table.columns.absenceType')}
                         </th>
                         <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          {t('table.columns.approvalStatus')}
+                          {t('table.columns.status')}
                         </th>
                         <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           {t('table.columns.hasConflict')}
