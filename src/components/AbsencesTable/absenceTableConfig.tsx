@@ -89,7 +89,7 @@ const translateAbsenceType = (type: string): string => {
 };
 
 // Table columns configuration - function to generate columns with current language
-export const getAbsenceTableColumns = (): TableColumn<AbsenceWithConflict>[] => [
+export const getAbsenceTableColumns = (onEmployeeNameClick?: (employeeName: string) => void): TableColumn<AbsenceWithConflict>[] => [
   {
     key: 'startDate',
     label: t('table.columns.startDate'),
@@ -122,7 +122,15 @@ export const getAbsenceTableColumns = (): TableColumn<AbsenceWithConflict>[] => 
     key: 'employeeName',
     label: t('table.columns.employeeName'),
     sortable: true,
-    render: (value) => (
+    render: (value) => onEmployeeNameClick ? (
+      <button
+        type="button"
+        onClick={() => onEmployeeNameClick(value)}
+        className="font-medium text-blue-600 hover:text-blue-800 hover:underline cursor-pointer transition-colors"
+      >
+        {value}
+      </button>
+    ) : (
       <span className="font-medium text-gray-900">{value}</span>
     ),
   },

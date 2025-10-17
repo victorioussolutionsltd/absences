@@ -5,6 +5,7 @@ export const translations = {
         startDate: 'Start Date',
         endDate: 'End Date',
         duration: 'Duration',
+        days: 'Days',
         employeeName: 'Employee Name',
         status: 'Status',
         absenceType: 'Absence Type',
@@ -51,6 +52,15 @@ export const translations = {
       fetchAbsences: 'Failed to fetch absences: {{error}}',
       fetchConflict: 'Failed to fetch conflict for ID {{id}}: {{error}}',
       fetchData: 'Failed to fetch data'
+    },
+    modal: {
+      close: 'Close',
+      employeeAbsences: {
+        title: 'All Absences for {{name}}',
+        subtitle: 'Showing {{count}} absence records',
+        noData: 'No absences found',
+        noDataDescription: 'No absence records were found for {{name}}.'
+      }
     }
   },
   es: {
@@ -59,6 +69,7 @@ export const translations = {
         startDate: 'Fecha de Inicio',
         endDate: 'Fecha de Fin',
         duration: 'Duración',
+        days: 'Días',
         employeeName: 'Nombre del Empleado',
         status: 'Estado',
         absenceType: 'Tipo de Ausencia',
@@ -105,6 +116,15 @@ export const translations = {
       fetchAbsences: 'Error al obtener ausencias: {{error}}',
       fetchConflict: 'Error al obtener conflicto para ID {{id}}: {{error}}',
       fetchData: 'Error al obtener datos'
+    },
+    modal: {
+      close: 'Cerrar',
+      employeeAbsences: {
+        title: 'Todas las Ausencias de {{name}}',
+        subtitle: 'Mostrando {{count}} registros de ausencias',
+        noData: 'No se encontraron ausencias',
+        noDataDescription: 'No se encontraron registros de ausencias para {{name}}.'
+      }
     }
   },
   de: {
@@ -113,6 +133,7 @@ export const translations = {
         startDate: 'Startdatum',
         endDate: 'Enddatum',
         duration: 'Dauer',
+        days: 'Tage',
         employeeName: 'Mitarbeitername',
         status: 'Status',
         absenceType: 'Abwesenheitstyp',
@@ -159,6 +180,15 @@ export const translations = {
       fetchAbsences: 'Fehler beim Abrufen der Abwesenheiten: {{error}}',
       fetchConflict: 'Fehler beim Abrufen des Konflikts für ID {{id}}: {{error}}',
       fetchData: 'Fehler beim Abrufen der Daten'
+    },
+    modal: {
+      close: 'Schließen',
+      employeeAbsences: {
+        title: 'Alle Abwesenheiten für {{name}}',
+        subtitle: '{{count}} Abwesenheitsdatensätze angezeigt',
+        noData: 'Keine Abwesenheiten gefunden',
+        noDataDescription: 'Es wurden keine Abwesenheitsdatensätze für {{name}} gefunden.'
+      }
     }
   }
 } as const;

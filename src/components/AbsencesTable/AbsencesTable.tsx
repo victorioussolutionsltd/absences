@@ -10,6 +10,7 @@ import {
 } from './absenceTableConfig';
 import { t } from '@/i18n/translations';
 import { calculateEndDate } from '@/utils/dateHelpers';
+import { EmployeeAbsencesModal } from './EmployeeAbsencesModal';
 
 // Types based on the API responses
 interface Absence {
@@ -35,6 +36,20 @@ export function AbsencesTable() {
   const [absencesData, setAbsencesData] = useState<AbsenceWithConflict[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedEmployee, setSelectedEmployee] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Handle employee name click
+  const handleEmployeeNameClick = (employeeName: string) => {
+    setSelectedEmployee(employeeName);
+    setIsModalOpen(true);
+  };
+
+  // Handle modal close
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setSelectedEmployee('');
+  };
 
   // Fetch absences from the first API
   const fetchAbsences = async (): Promise<Absence[]> => {
@@ -150,11 +165,18 @@ export function AbsencesTable() {
       
       <PaginatedTable
         data={absencesData}
-        columns={getAbsenceTableColumns()}
+        columns={getAbsenceTableColumns(handleEmployeeNameClick)}
         pageSize={API_CONFIG.PAGE_SIZE}
         loading={loading}
         emptyMessage={getTableConfig().emptyMessage}
         className={getTableConfig().className}
+      />
+
+      <EmployeeAbsencesModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        employeeName={selectedEmployee}
+        allAbsences={absencesData}
       />
     </div>
   );
