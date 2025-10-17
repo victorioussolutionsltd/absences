@@ -94,7 +94,6 @@ export function AbsencesTable() {
         // Then fetch conflict data for each absence in parallel
         const conflictPromises = absences.map(absence => fetchConflictSafely(absence.id));
         const conflicts = await Promise.all(conflictPromises);
-        const conflictMap = new Map(conflicts.map(conflict => [conflict.id, conflict]));
 
         // Map and combine the data
         const mappedData: AbsenceWithConflict[] = absences.map(absence => ({
@@ -105,7 +104,7 @@ export function AbsencesTable() {
           employeeName: `${absence.employee.firstName} ${absence.employee.lastName}`,
           approvalStatus: absence.approved ? 'approved' : 'pending approval',
           absenceType: absence.absenceType,
-          hasConflict: conflictMap.get(absence.id)?.conflicts || false,
+          hasConflict: conflicts[absence.id]?.conflicts || false,
         }));
 
         setAbsencesData(mappedData);
