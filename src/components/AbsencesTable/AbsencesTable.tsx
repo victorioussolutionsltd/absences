@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react';
 import { PaginatedTable } from '../Table';
 import { 
-  API_CONFIG, 
   getAbsenceTableColumns,
   getTableConfig,
   AbsenceWithConflict
 } from './absenceTableConfig';
+import { API_CONFIG } from '@/config/api';
 import { t } from '@/i18n/translations';
 import { calculateEndDate } from '@/utils/dateHelpers';
 import { EmployeeAbsencesModal } from './EmployeeAbsencesModal';

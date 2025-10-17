@@ -191,12 +191,9 @@ export const getAbsenceTableColumns = (onEmployeeNameClick?: (employeeName: stri
 /** @deprecated Use getAbsenceTableColumns() instead for dynamic language support */
 export const absenceTableColumns = getAbsenceTableColumns();
 
-// API configuration
-export const API_CONFIG = {
-  ABSENCES_URL: 'https://front-end-kata.brighthr.workers.dev/api/absences',
-  CONFLICT_URL: 'https://front-end-kata.brighthr.workers.dev/api/conflict',
-  PAGE_SIZE: 10,
-} as const;
+// Re-export API_CONFIG for backward compatibility
+/** @deprecated Import from '@/config/api' directly instead */
+export { API_CONFIG } from '@/config/api';
 
 // Table settings - function to generate config with current language
 export const getTableConfig = () => ({
