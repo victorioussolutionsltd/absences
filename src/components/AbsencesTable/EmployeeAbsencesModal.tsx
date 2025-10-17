@@ -173,7 +173,7 @@ export function EmployeeAbsencesModal({
                           </td>
                           <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
                             <span className={`inline-flex px-1 sm:px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(absence.approvalStatus)}`}>
-                              {t(`table.status.${absence.approvalStatus.replace(' ', '_')}`)}
+                               {absence.approvalStatus === 'approved' ? t('table.status.approved') : t('table.status.pendingApproval')}
                             </span>
                           </td>
                           <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
