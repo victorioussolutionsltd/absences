@@ -2,10 +2,23 @@
  * API configuration for the absences application
  */
 
+// Base API configuration
+export const API_BASE = {
+  BASE_URL: 'https://front-end-kata.brighthr.workers.dev',
+  PREFIX: '/api',
+} as const;
+
 // API endpoints and configuration
 export const API_CONFIG = {
-  ABSENCES_URL: 'https://front-end-kata.brighthr.workers.dev/api/absences',
-  CONFLICT_URL: 'https://front-end-kata.brighthr.workers.dev/api/conflict',
+  BASE_URL: API_BASE.BASE_URL,
+  PREFIX: API_BASE.PREFIX,
+  ENDPOINTS: {
+    ABSENCES: '/absences',
+    CONFLICT: '/conflict',
+  },
+  // Full URLs for backward compatibility
+  ABSENCES_URL: `${API_BASE.BASE_URL}${API_BASE.PREFIX}/absences`,
+  CONFLICT_URL: `${API_BASE.BASE_URL}${API_BASE.PREFIX}/conflict`,
   PAGE_SIZE: 10,
 } as const;
 
@@ -44,6 +57,16 @@ export const buildApiUrl = (baseUrl: string, endpoint: string, params?: Record<s
     }
   }
   return url.toString();
+};
+
+export const buildEndpointUrl = (endpoint: string, params?: Record<string, string>): string => {
+  const fullEndpoint = `${API_CONFIG.PREFIX}${endpoint}`;
+  return buildApiUrl(API_CONFIG.BASE_URL, fullEndpoint, params);
+};
+
+export const getEndpointUrl = (endpointKey: keyof typeof API_CONFIG.ENDPOINTS, params?: Record<string, string>): string => {
+  const endpoint = API_CONFIG.ENDPOINTS[endpointKey];
+  return buildEndpointUrl(endpoint, params);
 };
 
 export const handleApiError = (error: unknown): ApiError => {
