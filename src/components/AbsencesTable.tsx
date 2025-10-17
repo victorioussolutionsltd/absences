@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react';
 import { PaginatedTable } from './Table';
 import { 
-  absenceTableColumns, 
   API_CONFIG, 
-  TABLE_CONFIG,
-  type AbsenceWithConflict 
+  getAbsenceTableColumns,
+  getTableConfig,
+  AbsenceWithConflict
 } from './absenceTableConfig';
+import { t } from '@/i18n/translations';
 
 // Types based on the API responses
 interface Absence {
@@ -38,7 +39,7 @@ export function AbsencesTable() {
   const fetchAbsences = async (): Promise<Absence[]> => {
     const response = await fetch(API_CONFIG.ABSENCES_URL);
     if (!response.ok) {
-      throw new Error(`Failed to fetch absences: ${response.statusText}`);
+      throw new Error(t('errors.fetchAbsences', { error: response.statusText }));
     }
     return response.json();
   };
@@ -47,7 +48,7 @@ export function AbsencesTable() {
   const fetchConflict = async (id: number): Promise<Conflict> => {
     const response = await fetch(`${API_CONFIG.CONFLICT_URL}/${id}`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch conflict for ID ${id}: ${response.statusText}`);
+      throw new Error(t('errors.fetchConflict', { id: id.toString(), error: response.statusText }));
     }
     return response.json();
   };
@@ -103,7 +104,7 @@ export function AbsencesTable() {
 
         setAbsencesData(mappedData);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch data');
+        setError(err instanceof Error ? err.message : t('errors.fetchData'));
         console.error('Error fetching data:', err);
       } finally {
         setLoading(false);
@@ -124,14 +125,14 @@ export function AbsencesTable() {
               </svg>
             </div>
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-red-800">Error loading data</h3>
+              <h3 className="text-sm font-medium text-red-800">{t('table.messages.errorTitle')}</h3>
               <div className="mt-2 text-sm text-red-700">{error}</div>
               <div className="mt-4">
                 <button 
                   onClick={() => globalThis.location.reload()}
                   className="bg-red-100 px-3 py-2 text-sm text-red-800 rounded-md hover:bg-red-200 transition-colors"
                 >
-                  Try Again
+                  {t('table.messages.tryAgain')}
                 </button>
               </div>
             </div>
@@ -144,16 +145,16 @@ export function AbsencesTable() {
   return (
     <div className="p-6">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Employee Absences</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{t('page.subtitle')}</h2>
         <p className="text-gray-600">
-          Data from BrightHR API - absences and conflict information
+          {t('page.description')}
         </p>
         {!loading && (
           <div className="mt-2 text-sm text-gray-500">
-            Showing {absencesData.length} absence records
+            {t('page.recordsCount', { count: absencesData.length.toString() })}
             {absencesData.some(item => item.hasConflict) && (
               <span className="ml-2 text-red-600">
-                • {absencesData.filter(item => item.hasConflict).length} with conflicts
+                {t('page.conflictsCount', { count: absencesData.filter(item => item.hasConflict).length.toString() })}
               </span>
             )}
           </div>
@@ -162,11 +163,11 @@ export function AbsencesTable() {
       
       <PaginatedTable
         data={absencesData}
-        columns={absenceTableColumns}
+        columns={getAbsenceTableColumns()}
         pageSize={API_CONFIG.PAGE_SIZE}
         loading={loading}
-        emptyMessage={TABLE_CONFIG.emptyMessage}
-        className={TABLE_CONFIG.className}
+        emptyMessage={getTableConfig().emptyMessage}
+        className={getTableConfig().className}
       />
     </div>
   );

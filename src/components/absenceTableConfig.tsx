@@ -1,4 +1,5 @@
 import { type TableColumn } from './Table';
+import { t } from '../i18n/translations';
 
 // Combined data type for the table
 export interface AbsenceWithConflict {
@@ -43,29 +44,29 @@ const formatDate = (value: string): string => {
   }
 };
 
-// Table columns configuration
-export const absenceTableColumns: TableColumn<AbsenceWithConflict>[] = [
+// Table columns configuration - function to generate columns with current language
+export const getAbsenceTableColumns = (): TableColumn<AbsenceWithConflict>[] => [
   {
     key: 'startDate',
-    label: 'Start Date',
+    label: t('table.columns.startDate'),
     sortable: true,
     render: (value) => formatDate(value),
   },
   {
     key: 'endDate',
-    label: 'End Date',
+    label: t('table.columns.endDate'),
     sortable: true,
     render: (value) => formatDate(value),
   },
   {
     key: 'days',
-    label: 'Duration',
+    label: t('table.columns.duration'),
     sortable: true,
     className: 'text-center',
     render: (value) => {
-      if (!value) return <span className="font-medium text-gray-900">N/A</span>;
+      if (!value) return <span className="font-medium text-gray-900">{t('table.duration.notAvailable')}</span>;
       
-      const dayText = value === 1 ? 'day' : 'days';
+      const dayText = value === 1 ? t('table.duration.day') : t('table.duration.days');
       return (
         <span className="font-medium text-gray-900">
           {value} {dayText}
@@ -75,7 +76,7 @@ export const absenceTableColumns: TableColumn<AbsenceWithConflict>[] = [
   },
   {
     key: 'employeeName',
-    label: 'Employee Name',
+    label: t('table.columns.employeeName'),
     sortable: true,
     render: (value) => (
       <span className="font-medium text-gray-900">{value}</span>
@@ -83,7 +84,7 @@ export const absenceTableColumns: TableColumn<AbsenceWithConflict>[] = [
   },
   {
     key: 'approvalStatus',
-    label: 'Status',
+    label: t('table.columns.status'),
     sortable: true,
     render: (value) => (
       <span
@@ -93,13 +94,13 @@ export const absenceTableColumns: TableColumn<AbsenceWithConflict>[] = [
             : 'bg-yellow-100 text-yellow-800'
         }`}
       >
-        {value === 'approved' ? 'Approved' : 'Pending Approval'}
+        {value === 'approved' ? t('table.status.approved') : t('table.status.pendingApproval')}
       </span>
     ),
   },
   {
     key: 'absenceType',
-    label: 'Absence Type',
+    label: t('table.columns.absenceType'),
     sortable: true,
     render: (value) => (
       <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getAbsenceTypeColor(value)}`}>
@@ -109,7 +110,7 @@ export const absenceTableColumns: TableColumn<AbsenceWithConflict>[] = [
   },
   {
     key: 'hasConflict',
-    label: 'Has Conflict',
+    label: t('table.columns.hasConflict'),
     sortable: true,
     className: 'text-center',
     render: (value) => (
@@ -119,20 +120,24 @@ export const absenceTableColumns: TableColumn<AbsenceWithConflict>[] = [
             <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
-            Yes
+            {t('table.conflict.yes')}
           </span>
         ) : (
           <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
             <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
             </svg>
-            No
+            {t('table.conflict.no')}
           </span>
         )}
       </div>
     ),
   },
 ];
+
+// Backward compatibility - keep the static export but mark as deprecated
+/** @deprecated Use getAbsenceTableColumns() instead for dynamic language support */
+export const absenceTableColumns = getAbsenceTableColumns();
 
 // API configuration
 export const API_CONFIG = {
@@ -141,8 +146,12 @@ export const API_CONFIG = {
   PAGE_SIZE: 10,
 } as const;
 
-// Table settings
-export const TABLE_CONFIG = {
-  emptyMessage: 'No absence records found',
+// Table settings - function to generate config with current language
+export const getTableConfig = () => ({
+  emptyMessage: t('table.messages.emptyTable'),
   className: 'shadow-lg',
-} as const;
+} as const);
+
+// Backward compatibility - keep the static export but mark as deprecated
+/** @deprecated Use getTableConfig() instead for dynamic language support */
+export const TABLE_CONFIG = getTableConfig();
