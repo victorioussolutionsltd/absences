@@ -1,5 +1,5 @@
-import { type TableColumn } from './Table';
-import { t } from '../i18n/translations';
+import { type TableColumn } from '../Table';
+import { t } from '../../i18n/translations';
 
 // Absence type constants
 export const ABSENCE_TYPES = {

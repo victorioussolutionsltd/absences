@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import AbsencesTable from "@/components/AbsencesTable";
+import AbsencesTable from "@/components/AbsencesTable/AbsencesTable";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { t } from "@/i18n/translations";
 

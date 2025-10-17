@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { PaginatedTable } from './Table';
+import { PaginatedTable } from '../Table';
 import { 
   API_CONFIG, 
   getAbsenceTableColumns,
