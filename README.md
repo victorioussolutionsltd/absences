@@ -28,6 +28,10 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Technical Notes
+
+**Note**: It's strange that Turbopack in Next.js 15 doesn't support Webpack plugins very well.  This means SVG sprite plugins, which could improve performance, aren't easily used in this project.
+
 ## Testing
 
 This project includes comprehensive unit tests using Jest and React Testing Library.
