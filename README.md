@@ -28,6 +28,37 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Building Icons Sprite
+
+This project uses individual SVG files combined into a sprite for optimal performance. The sprite needs to be built before running the application.
+
+### Generating the Sprite
+
+```bash
+# Build the SVG sprite from individual icon files
+pnpm build:sprite
+# or
+npm run build:sprite
+# or
+yarn build:sprite
+```
+
+The sprite is automatically built when running:
+
+- `pnpm build` (production build)
+- `pnpm dev` (development server)
+
+### Icon System
+
+Individual SVG icons are stored in `src/icons/` and combined into a single sprite file at `public/icons/sprite.svg`. This approach provides:
+
+- **Performance**: Single HTTP request for all icons
+- **Maintainability**: Individual SVG files are easier to manage
+- **Optimization**: Automated minification and deduplication
+- **Type Safety**: TypeScript definitions for all available icons
+
+Available icons include: chevron-up, chevron-down, chevron-left, chevron-right, x, document, exclamation-circle, check-circle.
+
 ## Testing
 
 This project includes comprehensive unit tests using Jest and React Testing Library.
