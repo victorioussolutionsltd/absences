@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { t } from '@/i18n/translations';
 import { formatDate } from '@/utils/dateHelpers';
 import { AbsenceWithConflict, getTranslatedAbsenceType } from './absenceTableConfig';
+import { XMarkIcon, DocumentIcon, WarningIcon, CheckCircleIcon } from '../icons';
 
 interface EmployeeAbsencesModalProps {
   readonly isOpen: boolean;
@@ -104,9 +105,7 @@ export function EmployeeAbsencesModal({
             className="flex-shrink-0 text-gray-400 hover:text-gray-600 transition-colors p-1 sm:p-2"
             aria-label={t('modal.close')}
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
@@ -115,9 +114,7 @@ export function EmployeeAbsencesModal({
           {employeeAbsences.length === 0 ? (
             <div className="text-center py-6 sm:py-8">
               <div className="text-gray-400 mb-3 sm:mb-4">
-                <svg className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+                <DocumentIcon className="w-12 h-12 sm:w-16 sm:h-16 mx-auto" />
               </div>
               <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
                 {t('modal.employeeAbsences.noData')}
@@ -179,9 +176,7 @@ export function EmployeeAbsencesModal({
                           <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap">
                             {absence.hasConflict ? (
                               <span className="inline-flex items-center px-1 sm:px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
-                                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                                </svg>
+                                <WarningIcon className="w-3 h-3 mr-1" />
                                 <span className="hidden sm:inline">{t('table.conflict.yes')}</span>
                                 <span className="sm:hidden">!</span>
                               </span>
@@ -215,16 +210,12 @@ export function EmployeeAbsencesModal({
                       <div className="flex-shrink-0">
                         {absence.hasConflict ? (
                           <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
-                            <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                            </svg>
+                            <WarningIcon className="w-3 h-3 mr-1" />
                             <span className="truncate">{t('table.conflict.yes')}</span>
                           </span>
                         ) : (
                           <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                            <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
+                            <CheckCircleIcon className="w-3 h-3 mr-1" />
                             <span className="truncate">{t('table.conflict.no')}</span>
                           </span>
                         )}
@@ -243,16 +234,12 @@ export function EmployeeAbsencesModal({
                         <span className="text-xs text-gray-600 font-medium">{t('table.columns.hasConflict')}:</span>
                         {absence.hasConflict ? (
                           <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
-                            <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                            </svg>
+                            <WarningIcon className="w-3 h-3 mr-1" />
                             <span className="truncate">{t('table.conflict.yes')}</span>
                           </span>
                         ) : (
                           <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                            <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                            </svg>
+                            <CheckCircleIcon className="w-3 h-3 mr-1" />
                             <span className="truncate">{t('table.conflict.no')}</span>
                           </span>
                         )}

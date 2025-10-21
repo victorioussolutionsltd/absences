@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { ChevronUpIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from './icons';
 
 export interface TableColumn<T = any> {
   key: keyof T;
@@ -170,36 +171,20 @@ export function Table<T extends Record<string, any>>({
                     <span>{column.label}</span>
                     {column.sortable && (
                       <div className="flex flex-col">
-                        <svg
+                        <ChevronUpIcon
                           className={`w-3 h-3 ${
                             sortConfig.key === column.key && sortConfig.direction === 'asc'
                               ? 'text-blue-500'
                               : 'text-gray-400'
                           }`}
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <svg
+                        />
+                        <ChevronDownIcon
                           className={`w-3 h-3 -mt-1 ${
                             sortConfig.key === column.key && sortConfig.direction === 'desc'
                               ? 'text-blue-500'
                               : 'text-gray-400'
                           }`}
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
+                        />
                       </div>
                     )}
                   </div>
@@ -316,17 +301,7 @@ export function Table<T extends Record<string, any>>({
                   disabled={currentPage === 1}
                   className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ChevronLeftIcon className="w-5 h-5" />
                 </button>
 
                 {/* Page numbers */}
@@ -350,17 +325,7 @@ export function Table<T extends Record<string, any>>({
                   disabled={currentPage === totalPages}
                   className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <ChevronRightIcon className="w-5 h-5" />
                 </button>
               </nav>
           </div>
