@@ -55,6 +55,7 @@ exports[`PaginatedTable Snapshot Tests renders basic table with default props 1`
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -66,6 +67,7 @@ exports[`PaginatedTable Snapshot Tests renders basic table with default props 1`
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -92,6 +94,7 @@ exports[`PaginatedTable Snapshot Tests renders basic table with default props 1`
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -103,6 +106,7 @@ exports[`PaginatedTable Snapshot Tests renders basic table with default props 1`
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -401,6 +405,7 @@ exports[`PaginatedTable Snapshot Tests renders empty table 1`] = `
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -412,6 +417,7 @@ exports[`PaginatedTable Snapshot Tests renders empty table 1`] = `
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -438,6 +444,7 @@ exports[`PaginatedTable Snapshot Tests renders empty table 1`] = `
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -449,6 +456,7 @@ exports[`PaginatedTable Snapshot Tests renders empty table 1`] = `
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -641,6 +649,7 @@ exports[`PaginatedTable Snapshot Tests renders table with custom column renderin
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -652,6 +661,7 @@ exports[`PaginatedTable Snapshot Tests renders table with custom column renderin
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -678,6 +688,7 @@ exports[`PaginatedTable Snapshot Tests renders table with custom column renderin
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -689,6 +700,7 @@ exports[`PaginatedTable Snapshot Tests renders table with custom column renderin
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1017,6 +1029,7 @@ exports[`PaginatedTable Snapshot Tests renders table with custom empty message 1
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1028,6 +1041,7 @@ exports[`PaginatedTable Snapshot Tests renders table with custom empty message 1
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1054,6 +1068,7 @@ exports[`PaginatedTable Snapshot Tests renders table with custom empty message 1
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1065,6 +1080,7 @@ exports[`PaginatedTable Snapshot Tests renders table with custom empty message 1
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1172,6 +1188,7 @@ exports[`PaginatedTable Snapshot Tests renders table with mixed column configura
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1183,6 +1200,7 @@ exports[`PaginatedTable Snapshot Tests renders table with mixed column configura
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1209,6 +1227,7 @@ exports[`PaginatedTable Snapshot Tests renders table with mixed column configura
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1220,6 +1239,7 @@ exports[`PaginatedTable Snapshot Tests renders table with mixed column configura
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1802,6 +1822,7 @@ exports[`PaginatedTable Snapshot Tests renders table with pagination (multiple p
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1813,6 +1834,7 @@ exports[`PaginatedTable Snapshot Tests renders table with pagination (multiple p
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1839,6 +1861,7 @@ exports[`PaginatedTable Snapshot Tests renders table with pagination (multiple p
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -1850,6 +1873,7 @@ exports[`PaginatedTable Snapshot Tests renders table with pagination (multiple p
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -2636,6 +2660,7 @@ exports[`PaginatedTable Snapshot Tests renders table with pagination (multiple p
           disabled=""
         >
           <svg
+            aria-hidden="true"
             class="w-5 h-5"
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -2666,6 +2691,7 @@ exports[`PaginatedTable Snapshot Tests renders table with pagination (multiple p
           class="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <svg
+            aria-hidden="true"
             class="w-5 h-5"
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -2738,6 +2764,7 @@ exports[`PaginatedTable Snapshot Tests renders table with single page (no pagina
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -2749,6 +2776,7 @@ exports[`PaginatedTable Snapshot Tests renders table with single page (no pagina
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -2775,6 +2803,7 @@ exports[`PaginatedTable Snapshot Tests renders table with single page (no pagina
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -2786,6 +2815,7 @@ exports[`PaginatedTable Snapshot Tests renders table with single page (no pagina
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -3016,6 +3046,7 @@ exports[`PaginatedTable Snapshot Tests renders table with small page size 1`] = 
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -3027,6 +3058,7 @@ exports[`PaginatedTable Snapshot Tests renders table with small page size 1`] = 
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -3053,6 +3085,7 @@ exports[`PaginatedTable Snapshot Tests renders table with small page size 1`] = 
                 class="flex flex-col"
               >
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -3064,6 +3097,7 @@ exports[`PaginatedTable Snapshot Tests renders table with small page size 1`] = 
                   />
                 </svg>
                 <svg
+                  aria-hidden="true"
                   class="w-3 h-3 -mt-1 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -3306,6 +3340,7 @@ exports[`PaginatedTable Snapshot Tests renders table with small page size 1`] = 
           disabled=""
         >
           <svg
+            aria-hidden="true"
             class="w-5 h-5"
             fill="currentColor"
             viewBox="0 0 20 20"
@@ -3331,6 +3366,7 @@ exports[`PaginatedTable Snapshot Tests renders table with small page size 1`] = 
           class="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <svg
+            aria-hidden="true"
             class="w-5 h-5"
             fill="currentColor"
             viewBox="0 0 20 20"
