@@ -7,7 +7,7 @@
 
 import React from 'react'
 import { render } from '@testing-library/react'
-import { PaginatedTable, type TableColumn } from '../Table'
+import { Table, type TableColumn } from '../Table'
 
 // Simple test data
 interface User {
@@ -31,8 +31,8 @@ const testColumns: TableColumn<User>[] = [
 describe('PaginatedTable Basic Tests', () => {
   test('component renders without crashing', () => {
     // Simple test to ensure the component can be imported and instantiated
-    expect(PaginatedTable).toBeDefined()
-    expect(typeof PaginatedTable).toBe('function')
+    expect(Table).toBeDefined()
+    expect(typeof Table).toBe('function')
   })
 
   test('table columns interface is properly defined', () => {
@@ -74,7 +74,7 @@ describe('PaginatedTable Basic Tests', () => {
 describe('PaginatedTable Snapshot Tests', () => {
   test('renders basic table with default props', () => {
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={testUsers}
         columns={testColumns}
         pageSize={10}
@@ -85,7 +85,7 @@ describe('PaginatedTable Snapshot Tests', () => {
 
   test('renders empty table', () => {
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={[]}
         columns={testColumns}
         pageSize={10}
@@ -96,7 +96,7 @@ describe('PaginatedTable Snapshot Tests', () => {
 
   test('renders loading state', () => {
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={[]}
         columns={testColumns}
         pageSize={10}
@@ -108,7 +108,7 @@ describe('PaginatedTable Snapshot Tests', () => {
 
   test('renders table with custom empty message', () => {
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={[]}
         columns={testColumns}
         pageSize={10}
@@ -126,7 +126,7 @@ describe('PaginatedTable Snapshot Tests', () => {
     }))
 
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={manyUsers}
         columns={testColumns}
         pageSize={10}
@@ -157,7 +157,7 @@ describe('PaginatedTable Snapshot Tests', () => {
     ]
 
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={testUsers}
         columns={customColumns}
         pageSize={10}
@@ -168,7 +168,7 @@ describe('PaginatedTable Snapshot Tests', () => {
 
   test('renders table with single page (no pagination controls)', () => {
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={testUsers.slice(0, 2)}
         columns={testColumns}
         pageSize={10}
@@ -179,7 +179,7 @@ describe('PaginatedTable Snapshot Tests', () => {
 
   test('renders table with small page size', () => {
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={testUsers}
         columns={testColumns}
         pageSize={2}
@@ -196,7 +196,7 @@ describe('PaginatedTable Snapshot Tests', () => {
     ]
 
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={testUsers}
         columns={nonSortableColumns}
         pageSize={10}
@@ -229,7 +229,7 @@ describe('PaginatedTable Snapshot Tests', () => {
     ]
 
     const { container } = render(
-      <PaginatedTable
+      <Table
         data={testUsers}
         columns={mixedColumns}
         pageSize={10}

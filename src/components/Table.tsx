@@ -20,7 +20,7 @@ export interface PaginatedTableProps<T = any> {
   readonly showPagination?: boolean;
 }
 
-export function PaginatedTable<T extends Record<string, any>>({
+export function Table<T extends Record<string, any>>({
   data,
   columns,
   pageSize = 10,
@@ -371,4 +371,4 @@ export function PaginatedTable<T extends Record<string, any>>({
 }
 
 // Export default for convenience
-export default PaginatedTable;
+export default Table;

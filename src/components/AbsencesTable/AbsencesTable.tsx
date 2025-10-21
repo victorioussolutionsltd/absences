@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { PaginatedTable } from '../Table';
+import { Table } from '../Table';
 import { 
   getAbsenceTableColumns,
   getTableConfig,
@@ -163,7 +163,7 @@ export function AbsencesTable() {
         )}
       </div>
       
-      <PaginatedTable
+      <Table
         data={absencesData}
         columns={getAbsenceTableColumns(handleEmployeeNameClick)}
         pageSize={API_CONFIG.PAGE_SIZE}
