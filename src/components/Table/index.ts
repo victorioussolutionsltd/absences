@@ -1,3 +1,4 @@
+export { Table, default } from './Table';
 export { TableLoadingSkeleton } from './TableLoadingSkeleton';
 export { MobileSortControls } from './MobileSortControls';
 export { TableHeader } from './TableHeader';
