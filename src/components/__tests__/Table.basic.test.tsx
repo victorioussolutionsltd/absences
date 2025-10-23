@@ -7,7 +7,7 @@
 
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Table, type TableColumn } from '../Table'
+import { Table, type TableColumn } from '../Table/index'
 
 // Simple test data
 interface User {

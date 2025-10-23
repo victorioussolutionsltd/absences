@@ -1,4 +1,4 @@
-import { type TableColumn } from '../Table';
+import { type TableColumn } from '../Table/index';
 import { t } from '../../i18n/translations';
 import { formatDate } from '@/utils/dateHelpers';
 import { WarningIcon, CheckIcon } from '../icons';

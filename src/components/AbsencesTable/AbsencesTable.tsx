@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Table } from '../Table';
+import { Table } from '../Table/index';
 import { 
   getAbsenceTableColumns,
   getTableConfig,
